@@ -1,0 +1,64 @@
+public class SingleLinkedList{
+  public Node head = null;
+  public int size = 0;
+
+  public Node CreateSingleLinkedList(int x){
+    Node node = new Node(5);
+    head = node;
+    size++;
+    return head;
+  }
+  // Insertion in SingleLinkedList
+
+  public void Insertion(int x,int location){
+    Node n = new Node(x);
+    if(head == null){
+      CreateSingleLinkedList(x);
+    }
+    else if(location == 0){
+      n.next = head;
+      head = n;
+      size++;
+    }
+    else if(location >= size){
+      Node current = head;
+      while(current.next!=null){
+        current = current.next;
+      }
+      current.next = n;
+      size++;
+    }
+    else{
+      Node current  = head;
+      int i = 0;
+    while(i<location-1){
+      current = current.next;
+      i++;
+    }
+      n.next = current.next;
+    current.next = n;
+      size++;
+    }
+  }
+  // SingleLinkedList Traversal
+   public void traversal(){
+     Node k = head;
+     while(k!=null){
+       System.out.println(k.data);k = k.next;
+     }
+   }
+  // Search for a node
+  public boolean Find(int x){
+    boolean b  = false;
+    Node k = head;
+    while(k!=null){
+      if(k.data ==x){
+        b = true;
+        break;
+      }
+      k = k.next;
+    }
+    return b;
+  }
+  
+}
